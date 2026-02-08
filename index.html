@@ -402,6 +402,113 @@
       border-top: 1px solid var(--border);
     }
     
+    /* Contact Form */
+    .contact-form-wrapper {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    
+    .contact-form {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 40px;
+    }
+    
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-group label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 14px 16px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--text);
+      font-size: 15px;
+      font-family: inherit;
+      transition: border-color 0.2s;
+    }
+    
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--purple);
+    }
+    
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: var(--text-dim);
+    }
+    
+    .form-group select {
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%238888a0' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+    }
+    
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+    
+    .btn-submit {
+      width: 100%;
+      margin-top: 8px;
+      justify-content: center;
+    }
+    
+    .contact-alt {
+      text-align: center;
+      margin-top: 32px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+    }
+    
+    .contact-alt p {
+      color: var(--text-dim);
+      font-size: 14px;
+      margin-bottom: 16px;
+    }
+    
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    
+    .contact-links a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    
+    .contact-links a:hover {
+      color: var(--purple);
+    }
+    
     /* Mobile */
     @media (max-width: 768px) {
       .nav-links { display: none; }
@@ -410,6 +517,9 @@
       section { padding: 60px 0; }
       .cta-section { padding: 40px 24px; }
       .cta-contact { flex-direction: column; gap: 16px; }
+      .form-row { grid-template-columns: 1fr; gap: 0; }
+      .contact-form { padding: 24px; }
+      .contact-links { flex-direction: column; gap: 12px; }
     }
   </style>
 </head>
@@ -585,12 +695,76 @@
   
   <section id="contact">
     <div class="container">
-      <div class="cta-section">
-        <h2>Ready to Get Started?</h2>
-        <p>Free consultation — no obligation. Let's talk about what you're trying to solve.</p>
-        <div class="cta-contact">
-          <a href="mailto:bobdodgecreative@gmail.com">📧 bobdodgecreative@gmail.com</a>
-          <a href="tel:+17145958391">📱 (714) 595-8391</a>
+      <div class="section-header">
+        <h2>Free Consultation</h2>
+        <p>Tell us about your project and we'll get back to you within 24 hours.</p>
+      </div>
+      
+      <div class="contact-form-wrapper">
+        <form class="contact-form" action="https://formspree.io/f/xwpkqvqn" method="POST">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Name *</label>
+              <input type="text" id="name" name="name" required placeholder="Your name">
+            </div>
+            <div class="form-group">
+              <label for="company">Company</label>
+              <input type="text" id="company" name="company" placeholder="Your business name">
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Email *</label>
+              <input type="email" id="email" name="email" required placeholder="you@company.com">
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567">
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="service">What do you need help with? *</label>
+            <select id="service" name="service" required>
+              <option value="">Select a service...</option>
+              <option value="dashboard">Business Dashboard</option>
+              <option value="inventory">Inventory & Operations</option>
+              <option value="booking">Booking & Scheduling</option>
+              <option value="ai-assistant">AI Customer Service</option>
+              <option value="marketing">Marketing Automation</option>
+              <option value="workflow">Workflow Automation</option>
+              <option value="other">Something Else</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="budget">Budget Range</label>
+            <select id="budget" name="budget">
+              <option value="">Prefer not to say</option>
+              <option value="under-2500">Under $2,500</option>
+              <option value="2500-5000">$2,500 - $5,000</option>
+              <option value="5000-10000">$5,000 - $10,000</option>
+              <option value="10000-plus">$10,000+</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="message">Tell us about your project *</label>
+            <textarea id="message" name="message" required rows="4" placeholder="What problem are you trying to solve? What does success look like?"></textarea>
+          </div>
+          
+          <button type="submit" class="btn btn-primary btn-submit">
+            Request Consultation →
+          </button>
+        </form>
+        
+        <div class="contact-alt">
+          <p>Prefer to reach out directly?</p>
+          <div class="contact-links">
+            <a href="mailto:bobdodgecreative@gmail.com">📧 bobdodgecreative@gmail.com</a>
+            <a href="tel:+17145958391">📱 (714) 595-8391</a>
+          </div>
         </div>
       </div>
     </div>
