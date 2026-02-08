@@ -701,7 +701,11 @@
       </div>
       
       <div class="contact-form-wrapper">
-        <form class="contact-form" action="https://formspree.io/f/xwpkqvqn" method="POST">
+        <form class="contact-form" action="https://formsubmit.co/bobdodgecreative@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="New Consultation Request - Bob Dodge Creative">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://bobdodgecreative.com?submitted=true">
+          <input type="text" name="_honey" style="display:none">
           <div class="form-row">
             <div class="form-group">
               <label for="name">Name *</label>
@@ -775,5 +779,19 @@
       <p>© 2026 Bob Dodge Creative • College Station, TX</p>
     </div>
   </footer>
+  <script>
+    // Show thank you message if form was submitted
+    if (window.location.search.includes('submitted=true')) {
+      const form = document.querySelector('.contact-form');
+      form.innerHTML = `
+        <div style="text-align:center;padding:40px 0;">
+          <div style="font-size:48px;margin-bottom:16px;">✅</div>
+          <h3 style="font-size:24px;margin-bottom:12px;">Thanks for reaching out!</h3>
+          <p style="color:var(--text-dim);">We'll get back to you within 24 hours.</p>
+        </div>
+      `;
+      window.history.replaceState({}, '', window.location.pathname);
+    }
+  </script>
 </body>
 </html>
